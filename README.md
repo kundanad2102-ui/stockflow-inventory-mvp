@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # StockFlow MVP - SaaS Inventory Management System
 
 This project follows the technical assessment PRD for a 6-hour MVP inventory app.
@@ -114,3 +115,6 @@ Settings:
 ## Notes
 
 This MVP intentionally excludes employees, roles, purchase orders, suppliers, images, reports, charts, billing, payment integration, CSV upload, and warehouse management because they are out of scope in the PRD.
+=======
+# stockflow-inventory-mvp
+>>>>>>> 95a829d0bb206dcd14cc62adb4b8f00d2b455272
