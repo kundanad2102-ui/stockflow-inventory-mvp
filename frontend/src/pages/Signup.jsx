@@ -1,0 +1,8 @@
+import React,{useState} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext.jsx';
+export default function Signup(){
+ const [form,setForm]=useState({email:'',password:'',organizationName:''}); const [error,setError]=useState(''); const [loading,setLoading]=useState(false); const {signup}=useAuth(); const nav=useNavigate();
+ const submit=async(e)=>{e.preventDefault();setError('');setLoading(true);try{await signup(form);nav('/dashboard')}catch(err){setError(err.response?.data?.message||'Signup failed')}finally{setLoading(false)}};
+ return <div className="min-h-screen grid place-items-center p-4"><form onSubmit={submit} className="card w-full max-w-md space-y-4"><h1 className="text-3xl font-bold">Create Account</h1><p className="text-slate-600">One user per organization for this MVP.</p>{error&&<div className="rounded bg-red-100 p-3 text-red-700">{error}</div>}<input className="input" placeholder="Organization Name" value={form.organizationName} onChange={e=>setForm({...form,organizationName:e.target.value})}/><input className="input" placeholder="Email" type="email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})}/><input className="input" placeholder="Password min 6 characters" type="password" value={form.password} onChange={e=>setForm({...form,password:e.target.value})}/><button disabled={loading} className="btn w-full">{loading?'Creating...':'Signup'}</button><p className="text-center text-sm">Already registered? <Link className="text-blue-600 font-semibold" to="/login">Login</Link></p></form></div>
+}
